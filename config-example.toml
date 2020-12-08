@@ -1,0 +1,20 @@
+# mirai-console 相关配置
+[mirai-session]
+host = "http://localhost"
+port = 1234
+authKey = "yourAuthKey"
+account = 1234567890
+websocket = true
+
+# 彩云天气-Api 相关配置
+[weather-api]
+token = "yourApiToken"
+
+# weather-bot 相关配置
+[bot]
+port = 12345
+[bot.subscribe]
+# 订阅天气的群列表
+group = []
+# 订阅天气的好友列表
+friend = []
