@@ -13,6 +13,11 @@ token = "yourApiToken"
 # weather-bot 相关配置
 [bot]
 port = 12345
+# bot管理员
+[bot.admin]
+master = 987654321
+admin = []
+# 订阅每日天气的群和好友
 [bot.subscribe]
 # 订阅天气的群列表
 group = []

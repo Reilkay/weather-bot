@@ -9,9 +9,12 @@ from graia.application.interrupt.interrupts import GroupMessageInterrupt
 from graia.broadcast import Broadcast
 
 from weather.temp_data import TempWeatherData
+from config.config import config
+from bot.usual import groupDailyWeather
 from utils.utils import currentWeatherToStr, dailyWeatherToStr
 
 weather = TempWeatherData()
+config_admin = config['bot']['admin']
 
 loop = asyncio.get_event_loop()
 bcc = Broadcast(loop=loop)
@@ -20,7 +23,10 @@ bcc = Broadcast(loop=loop)
 @bcc.receiver("FriendMessage")
 async def friend_message_listener(app: GraiaMiraiApplication, friend: Friend,
                                   message: MessageChain):
-    if message.asDisplay().startswith("/天气"):
+    if friend.id == config_admin['master'] and message.asDisplay().startswith(
+            "/强制推送"):
+        groupDailyWeather()
+    elif message.asDisplay().startswith("/天气"):
         await app.sendFriendMessage(
             friend,
             MessageChain.create(
