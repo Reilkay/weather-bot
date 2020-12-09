@@ -1,5 +1,5 @@
 from bot.master import app
-from scheduler.scheduler import scheduler
+from scheduler.scheduler import startSchedule
 
-scheduler.start()
+startSchedule()
 app.launch_blocking()
