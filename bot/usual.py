@@ -3,8 +3,7 @@ from graia.application.message.chain import MessageChain
 from graia.application.message.elements.internal import AtAll, Plain
 
 from config.config import config
-from bot.master import app
-from bot.bcc import loop
+from bot.master import app, loop
 from utils.utils import dailyWeatherToStr
 from weather.temp_data import TempWeatherData
 

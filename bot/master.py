@@ -1,7 +1,11 @@
+import asyncio
 from graia.application import GraiaMiraiApplication, Session
+from graia.broadcast import Broadcast
 
-from bot.bcc import bcc
 from config.config import config
+
+loop = asyncio.get_event_loop()
+bcc = Broadcast(loop=loop)
 
 config_session = config['mirai-session']
 app = GraiaMiraiApplication(

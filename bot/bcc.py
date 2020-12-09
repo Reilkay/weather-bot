@@ -1,4 +1,3 @@
-import asyncio
 from graia.application import GraiaMiraiApplication
 from graia.application.message.chain import MessageChain
 from graia.application.message.elements.internal import At, Plain
@@ -6,18 +5,15 @@ from graia.application.friend import Friend
 from graia.application.group import Group, Member
 from graia.application.interrupt import InterruptControl
 from graia.application.interrupt.interrupts import GroupMessageInterrupt
-from graia.broadcast import Broadcast
 
 from weather.temp_data import TempWeatherData
 from config.config import config
+from bot.master import bcc
 from bot.usual import groupDailyWeather
 from utils.utils import currentWeatherToStr, dailyWeatherToStr
 
 weather = TempWeatherData()
 config_admin = config['bot']['admin']
-
-loop = asyncio.get_event_loop()
-bcc = Broadcast(loop=loop)
 
 
 @bcc.receiver("FriendMessage")
