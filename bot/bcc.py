@@ -9,7 +9,7 @@ from graia.application.interrupt.interrupts import GroupMessageInterrupt
 from weather.temp_data import TempWeatherData
 from config.config import config
 from bot.master import bcc
-from bot.usual import groupDailyWeather
+from bot.usual import groupDailyWeatherPush
 from utils.utils import currentWeatherToStr, dailyWeatherToStr
 
 weather = TempWeatherData()
@@ -22,7 +22,7 @@ def initBcc():
                                       friend: Friend, message: MessageChain):
         if friend.id == config_admin['master'] and message.asDisplay(
         ).startswith("/强制推送"):
-            groupDailyWeather()
+            groupDailyWeatherPush()
         elif message.asDisplay().startswith("/天气"):
             await app.sendFriendMessage(
                 friend,

@@ -11,7 +11,13 @@ config_bot_subscribe = config['bot']['subscribe']
 weather = TempWeatherData()
 
 
-def groupDailyWeather():
+def subscribeDailyPush():
+    weather.freshDailyWeather()
+    groupDailyWeatherPush()
+    friendDailyWeatherPush()
+
+
+def groupDailyWeatherPush():
     tasks = []
     for target in config_bot_subscribe['group']:
         tasks.append(
@@ -24,7 +30,7 @@ def groupDailyWeather():
     asyncio.run_coroutine_threadsafe(asyncio.wait(tasks), loop)
 
 
-def friendDailyWeather():
+def friendDailyWeatherPush():
     weather.freshDailyWeather()
     tasks = []
     for target in config_bot_subscribe['friend']:
